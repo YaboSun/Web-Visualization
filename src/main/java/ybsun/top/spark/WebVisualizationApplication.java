@@ -9,6 +9,5 @@ public class WebVisualizationApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebVisualizationApplication.class, args);
     }
-
 }
 
