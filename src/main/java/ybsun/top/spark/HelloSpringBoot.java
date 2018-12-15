@@ -3,6 +3,7 @@ package ybsun.top.spark;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author YaboSun
@@ -14,5 +15,10 @@ public class HelloSpringBoot {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloSpring() {
         return "hello world spring boot";
+    }
+
+    @RequestMapping(value = "/first", method = RequestMethod.GET)
+    public ModelAndView firstDemo() {
+        return new ModelAndView("test");
     }
 }
