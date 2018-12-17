@@ -21,4 +21,9 @@ public class HelloSpringBoot {
     public ModelAndView firstDemo() {
         return new ModelAndView("test");
     }
+
+    @RequestMapping(value = "/static_pie", method = RequestMethod.GET)
+    public ModelAndView staticPieDemo() {
+        return new ModelAndView("demo");
+    }
 }
