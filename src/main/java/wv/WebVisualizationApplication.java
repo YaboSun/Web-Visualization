@@ -1,4 +1,4 @@
-package ybsun.top.spark;
+package wv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

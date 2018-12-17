@@ -1,4 +1,4 @@
-package ybsun.top.spark;
+package wv.domain;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
