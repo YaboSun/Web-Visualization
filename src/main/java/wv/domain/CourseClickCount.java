@@ -1,10 +1,14 @@
 package wv.domain;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author YaboSun
  *
  * 实战课程访问数量实体类
  */
+// 通过注解交给Spring进行管理
+@Component
 public class CourseClickCount {
 
     // 根据ECharts中定义的来取名称

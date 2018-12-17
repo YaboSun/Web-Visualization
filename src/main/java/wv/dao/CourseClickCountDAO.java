@@ -1,5 +1,6 @@
 package wv.dao;
 
+import org.springframework.stereotype.Component;
 import wv.domain.CourseClickCount;
 import wv.utils.HBaseUtils;
 
@@ -13,6 +14,8 @@ import java.util.Map;
  *
  * 实战课程访问数量数据访问层
  */
+// 通过注解交给Spring进行管理
+@Component
 public class CourseClickCountDAO {
 
 
