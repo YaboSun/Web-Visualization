@@ -1,9 +1,9 @@
 package wv.web;
 
-import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import wv.dao.CourseClickCountDAO;
@@ -13,9 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author YaboSun
- */
 @RestController
 public class StatApp {
     private static Map<String, String> courses = new HashMap<>();
@@ -32,10 +29,10 @@ public class StatApp {
     @Autowired
     CourseClickCountDAO courseClickCountDAO;
 
-    @RequestMapping(value = "/course_clickcount_dynamic", method = RequestMethod.GET)
-    public ModelAndView courseClickCount() throws Exception {
+    @RequestMapping(value = "/course_clickcount_dynamic", method = RequestMethod.POST)
+    @ResponseBody
+    public List<CourseClickCount> courseClickCount() throws Exception {
         String day = "20181214";
-        ModelAndView view = new ModelAndView("index");
 
         // 通过给定的天拿到list
         List<CourseClickCount> list = courseClickCountDAO.queryByDate(day);
@@ -44,8 +41,11 @@ public class StatApp {
         for (CourseClickCount model : list) {
             model.setName(courses.get(model.getName().substring(9)));
         }
-        JSONArray jsonArray = JSONArray.fromObject(list);
-        view.addObject("data_json", jsonArray);
-        return view;
+        return list;
+    }
+
+    @RequestMapping(value = "/echarts", method = RequestMethod.GET)
+    public ModelAndView dynamicEcharts() {
+        return new ModelAndView("echarts");
     }
 }
